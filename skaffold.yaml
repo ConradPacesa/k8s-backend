@@ -1,0 +1,18 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+  artifacts:
+  - image: conradpacesa/api-gateway
+    context: api-gateway
+  - image: conradpacesa/item-service
+    context: item-service
+deploy:
+  kubectl:
+    manifests:
+    - k8s\api-gateway-cluser-ip-service.yaml
+    - k8s\api-gateway-deployment.yaml
+    - k8s\ingress-service.yaml
+    - k8s\item-db-cluster-ip-service.yaml
+    - k8s\item-db-deployment.yaml
+    - k8s\item-service-cluster-ip-service.yaml
+    - k8s\item-service-deployment.yaml

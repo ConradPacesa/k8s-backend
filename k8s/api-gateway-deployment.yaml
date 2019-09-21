@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gw
+  template:
+    metadata:
+      labels:
+        app: api-gw
+    spec:
+      containers:
+        - name: api-gw
+          image: conradpacesa/api-gateway
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080
